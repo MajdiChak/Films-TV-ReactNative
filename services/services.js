@@ -1,17 +1,37 @@
 import axios from 'axios';
-const apiUrl = 'https://api.themoviedb.org/3';
-const apiKey = 'api_key=98f37b856f9ae9c759b27695816d9abc';
 
-//Get popular movies
+const apiUrl = 'https://api.themoviedb.org/3';
+const apiKey = 'api_key=8c247ea0b4b56ed2ff7d41c9a833aa77';
+// Get Popular Movies
 export const getPopularMovies = async () => {
-  const url = `${apiUrl}/movie/popular?${apiKey}`;
-  const response = await axios.get(url);
-  return response.data.results;
+  const resp = await axios.get(`${apiUrl}/movie/popular?${apiKey}`);
+  return resp.data.results;
 };
 
-//Get popular tv
-export const getPopularTV = async () => {
-  const url = `${apiUrl}/tv/popular?${apiKey}`;
-  const response = await axios.get(url);
-  return response.data.results;
+// Get Upcoming Movies
+export const getUpcomingMovies = async () => {
+  const resp = await axios.get(`${apiUrl}/movie/upcoming?${apiKey}`);
+  return resp.data.results;
+};
+
+// Get Popular TV
+export const getPopularTv = async () => {
+  const resp = await axios.get(`${apiUrl}/tv/popular?${apiKey}`);
+  return resp.data.results;
+};
+
+// Get Family Movies
+export const getFamilyMovies = async () => {
+  const resp = await axios.get(
+    `${apiUrl}/discover/movie?${apiKey}&with_genres=10751`,
+  );
+  return resp.data.results;
+};
+
+// Get Documnetery Movies
+export const getDocumentaryMovies = async () => {
+  const resp = await axios.get(
+    `${apiUrl}/discover/movie?${apiKey}&with_genres=99`,
+  );
+  return resp.data.results;
 };
